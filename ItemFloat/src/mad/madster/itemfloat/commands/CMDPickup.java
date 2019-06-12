@@ -23,19 +23,18 @@ public class CMDPickup implements CommandExecutor {
 		}
 		Player p = (Player) sender;
 		if (!p.hasPermission("if.staff")) {
-			p.sendMessage(ChatColor.GOLD + "[ItemFloat] " + ChatColor.RED + "You do not have permission to do this.");
+			p.sendMessage(ItemFloat.tag + ChatColor.RED + "You do not have permission to do this.");
 			return true;
 		}
 
 		if (main.canpickup.contains(p)) {
 			main.canpickup.remove(p);
-			p.sendMessage(ChatColor.GOLD + "[ItemFloat] " + ChatColor.GREEN + "You will no longer pickup floating items."
-					+ ChatColor.GOLD + "\n[ItemFloat] " + ChatColor.GREEN + "To pick items up, use this command again!");
+			p.sendMessage(ItemFloat.tag + ChatColor.GREEN + "You will no longer pickup floating items." + "\n"
+					+ ItemFloat.tag + ChatColor.GREEN + "To pick items up, use this command again!");
 		} else {
 			main.canpickup.add(p);
-			p.sendMessage(
-					ChatColor.GOLD + "[ItemFloat] " + ChatColor.GREEN + "You can now pick up floating items." + ChatColor.GOLD
-							+ "\n[ItemFloat] " + ChatColor.GREEN + "To disable floating item pickup, use this command again!");
+			p.sendMessage(ItemFloat.tag + ChatColor.GREEN + "You can now pick up floating items." + "\n" + ItemFloat.tag
+					+ ChatColor.GREEN + "\nTo disable floating item pickup, use this command again!");
 		}
 
 		return true;

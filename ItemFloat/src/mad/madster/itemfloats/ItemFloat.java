@@ -23,11 +23,13 @@ import mad.madster.itemfloat.commands.CMDPickup;
 
 public class ItemFloat extends JavaPlugin implements Listener {
 	public ArrayList<Player> canpickup = new ArrayList();
+	public static String tag = ChatColor.GOLD + "[ItemFloat] ";
 
 	public void onEnable() {
-		//this.saveResource("config.yml", false);
+		// this.saveResource("config.yml", false);
 
-		this.getLogger().info("ItemFloat has been enabled!");
+		this.getLogger().info("sucesfully enabled!");
+		this.getLogger().info("Created by https://github.com/madster456");
 
 		getServer().getPluginManager().registerEvents(this, this);
 
@@ -37,25 +39,25 @@ public class ItemFloat extends JavaPlugin implements Listener {
 	}
 
 	public void onDisable() {
-		this.getLogger().info("ItemFloat has been disabled.");
+		this.getLogger().info("sucesfully disabled.");
 
 	}
 
-	
 	@EventHandler
-    public void onPlayerPickupItem(EntityPickupItemEvent event) {
-        if (event.getItem().getItemStack().getItemMeta().hasLore() && event.getItem().getItemStack().getItemMeta().getLore().contains("FLOATING") &&
-                !this.canpickup.contains(event.getEntity())) {
-            event.setCancelled(true);
-        }
-    }
-	
+	public void onPlayerPickupItem(EntityPickupItemEvent event) {
+		if (event.getItem().getItemStack().getItemMeta().hasLore()
+				&& event.getItem().getItemStack().getItemMeta().getLore().contains("FLOATING")
+				&& !this.canpickup.contains(event.getEntity())) {
+			event.setCancelled(true);
+		}
+	}
+
 	@EventHandler
 	public void onPlayerDropItem(PlayerDropItemEvent event) {
 		if (event.getItemDrop().getItemStack().getItemMeta().hasLore()
 				&& event.getItemDrop().getItemStack().getItemMeta().getLore().contains("FLOATING")) {
-			//event.getItemDrop().setVelocity(new Vector(0, 0, 0));
-			event.getPlayer().sendMessage(ChatColor.GOLD + "[ItemFloat] " + ChatColor.GREEN + "Floating Item Placed!");
+			// event.getItemDrop().setVelocity(new Vector(0, 0, 0));
+			event.getPlayer().sendMessage(tag + ChatColor.GREEN + "Floating Item Placed!");
 			event.getPlayer()
 					.sendMessage(ChatColor.AQUA + "X: " + ChatColor.GREEN
 							+ event.getItemDrop().getLocation().getBlockX() + ChatColor.AQUA + "\nY: " + ChatColor.GREEN
@@ -69,18 +71,17 @@ public class ItemFloat extends JavaPlugin implements Listener {
 			return;
 		}
 	}
-	
-	@EventHandler(priority = EventPriority.HIGH) 
-		public void itemMerg(ItemMergeEvent event) {
-		if(event.getEntity().getType() == EntityType.DROPPED_ITEM) {
+
+	@EventHandler(priority = EventPriority.HIGH)
+	public void itemMerg(ItemMergeEvent event) {
+		if (event.getEntity().getType() == EntityType.DROPPED_ITEM) {
 			ItemStack item = event.getEntity().getItemStack();
-			
-			if(item.getItemMeta().hasLore() && item.getItemMeta().getLore().contains("FLOATING")) {
+
+			if (item.getItemMeta().hasLore() && item.getItemMeta().getLore().contains("FLOATING")) {
 				event.setCancelled(true);
 			}
 		}
 	}
-	
 
 	@EventHandler(priority = EventPriority.HIGH)
 	public void itemVanish(ItemDespawnEvent event) {
@@ -88,20 +89,26 @@ public class ItemFloat extends JavaPlugin implements Listener {
 			ItemStack item = event.getEntity().getItemStack();
 
 			if (item.getItemMeta().hasLore() && item.getItemMeta().getLore().contains("FLOATING")) {
-				//event.getEntity().getWorld().dropItem(event.getEntity().getLocation(), item);
-				//event.getEntity().getWorld().dropItem(event.getEntity().getLocation(), item).setVelocity(new Vector(0, 0, 0).multiply(0));
-				//event.getEntity().setVelocity(new Vector(0, 0, 0).multiply(0));
+				// event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),
+				// item);
+				// event.getEntity().getWorld().dropItem(event.getEntity().getLocation(),
+				// item).setVelocity(new Vector(0, 0, 0).multiply(0));
+				// event.getEntity().setVelocity(new Vector(0, 0,
+				// 0).multiply(0));
 				event.setCancelled(true);
 			}
-				
-			
+
 		} else {
 			return;
 		}
 	}
-	
+
+	// @EventHandler
+	// public void alreadyFloating() {}
+
+	// pick up only the item you are looking at.
 	public void itemPickupLook(RayTraceResult event) {
-		
+
 	}
 
 }

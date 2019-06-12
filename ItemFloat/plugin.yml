@@ -15,7 +15,7 @@ commands:
   itemfloathelp:
     description: help command.
     aliases:
-      - fsihelp
+      - ifhelp
     permission: if.staff
     permission-message: You do not have permission!
     usage: /ifhelp
