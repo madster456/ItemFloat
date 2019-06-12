@@ -103,10 +103,7 @@ public class ItemFloat extends JavaPlugin implements Listener {
 		}
 	}
 
-	// @EventHandler
-	// public void alreadyFloating() {}
-
-	// pick up only the item you are looking at.
+	// pick up only the item you are looking at 
 	public void itemPickupLook(RayTraceResult event) {
 
 	}
