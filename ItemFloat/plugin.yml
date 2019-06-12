@@ -1,0 +1,28 @@
+name: ItemFloat
+version: 1.0.0
+author: Madster
+api-version: 1.14
+description: A plugin to display floating items.
+main: mad.madster.itemfloats.ItemFloat
+commands:
+  itemfloat:
+    description: main command for plugin.
+    aliases:
+      - if
+    permission: if.staff
+    permission-message: You do not have permission!
+    usage: /if
+  itemfloathelp:
+    description: help command.
+    aliases:
+      - fsihelp
+    permission: if.staff
+    permission-message: You do not have permission!
+    usage: /ifhelp
+  itemfloatpickup:
+    description: turn on/off pickup.
+    aliases:
+      - ifpickup
+    permission: if.staff
+    permission-message: You do not have permission!
+    usage: /ifpickup
